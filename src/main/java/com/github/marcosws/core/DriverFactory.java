@@ -17,13 +17,12 @@ public class DriverFactory {
 	public enum Browser{
 		CHROME, FIREFOX, IE, OPERA;
 	}
-	private static Browser currentBrowser;
 	
 	public static void setNavigator(Browser browser){
 		
 		String userPath = System.getProperty("user.dir");
 		String partialPath = "//src//main//resources//drivers";
-		currentBrowser = browser;
+		
 		Properties properties = new Properties();
 		FileInputStream file = null;
 		try {
@@ -62,17 +61,7 @@ public class DriverFactory {
 		return driver;
 	}
 	public static void killDriver(){
-		if(driver != null) {
-			driver.quit();
-			driver = null;
-			if(currentBrowser.equals(Browser.IE)){
-				try{
-					Runtime.getRuntime().exec("taskkill /F /IM IEDriverServer.exe");
-					Runtime.getRuntime().exec("taskkill /F /IM iexplore.exe");
-				}
-				catch (IOException e) {}
-			}
-		}
+		driver.quit();
 	}
 
 }

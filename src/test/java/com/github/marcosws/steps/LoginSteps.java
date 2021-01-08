@@ -1,6 +1,9 @@
 package com.github.marcosws.steps;
 
-import com.github.marcosws.base.Agenda;
+import org.junit.Assert;
+
+import com.github.marcosws.context.Agenda;
+import com.github.marcosws.pages.HomePage;
 import com.github.marcosws.pages.LoginPage;
 
 import io.cucumber.java.pt.Dado;
@@ -10,64 +13,51 @@ import io.cucumber.java.pt.Quando;
 
 public class LoginSteps {
 	
-	
-	Agenda agenda = new Agenda();
-	LoginPage loginPage = new LoginPage();
-	
+	Agenda agenda = null;
+	LoginPage login = null;
+	HomePage home = null;
+
 	@Dado("que usuário possa acessar a tela de login da agenda")
-	public void que_usuario_possa_acessar_a_tela_de_login_da_agenda() {
+	public void que_usuário_possa_acessar_a_tela_de_login_da_agenda() {
+		agenda = new Agenda();
 		agenda.iniciarAgenda();
-	}
-	
-	@Quando("informar um {string} válido")
-	public void informar_um_usuario_valido(String usuario) {
-		loginPage.digitarLogin(usuario);
-	}
-	
-	@Quando("inserir uma {string} válida") 
-	public void inserir_uma_leandro_válida(String senha) {
-		loginPage.digitarSenha(senha);
-	}
-	
-	@Então("o sistema deve permitir acesso a agenda")
-	public void o_sistema_deve_permitir_acesso_a_agenda() {
-		loginPage.clicarEntrar();
-	}
-	
-	@E("validar o tipo de {string} de usuario na tela home")
-	public void validar_o_tipo_de_conta_de_usuario_na_tela_home(String conta) {
-
-		System.out.println("Step 5 - OK [ " + conta + " ] ");
-		
+		login = new LoginPage();
 	}
 
+	@Quando("informar o usuario {string}")
+	public void informar_o_usuario(String usuario) {
+		login.digitarLogin(usuario);
+	}
+
+	@E("inserir uma senha {string}")
+	public void inserir_uma_senha(String senha) {
+		login.digitarSenha(senha);
+	}
+
+	@E("clicar bo botão entrar")
+	public void clicar_no_botao_entrar() {
+		login.clicarEntrar();
+	}
+
+	@Então("permitir acesso validando o tipo de {string} de usuario na tela home")
+	public void validar_o_tipo_de_de_usuario_na_tela_home(String tipoUsuario) {
+		home = new HomePage();
+		Assert.assertEquals("Validando o tipo de Usuario na Tela Home.",tipoUsuario, home.validarTipoUsuario());
+		home.clicarLogout();
+		agenda.finalizarAgenda();
+	}
+
+	@Então("negar acesso validando a mensagem {string} apresentada")
+	public void validar_a_mensagem_apresentada(String mensagem) {
+		Assert.assertEquals("Validando a caixa de dialogo na pagina.", mensagem, login.validarMensagemCaixaDialogo());
+		agenda.finalizarAgenda();
+	}
 	
-	@Quando("informar um {string}")
-	public void informar_um(String string) {
-	    
-		System.out.println("Arg 1 [ " + string + " ] ");
-		
+	@Então("negar acesso validando a mensagem {string} na pagina")
+	public void negar_acesso_validando_a_mensagem_na_pagina(String mensagem) {
+		Assert.assertEquals("Validando a caixa de dialogo na pagina.", mensagem, login.validarMensagemPagina());
+		login.clicarVoltar();
+	    agenda.finalizarAgenda();
 	}
-
-	@Quando("inserir uma {string}")
-	public void inserir_uma(String string) {
-	    
-		System.out.println("Arg 2 [ " + string + " ] ");
-		
-	}
-
-	@Então("o sistema deve negar acesso a agenda")
-	public void o_sistema_deve_negar_acesso_a_agenda() {
-	 
-
-		
-	}
-
-	@Então("validar a {string} apresentada")
-	public void validar_a_apresentada(String string) {
-	
-		System.out.println("Arg 3 [ " + string + " ] ");
-	}
-	
 
 }
