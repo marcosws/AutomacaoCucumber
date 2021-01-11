@@ -18,7 +18,7 @@ public class HomeSteps {
 	
 	@E("validar os textos na tela")
 	public void validar_os_textos_na_tela() {
-	
+
 	}
 
 }

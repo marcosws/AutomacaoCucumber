@@ -67,7 +67,7 @@ public class CadastroSteps {
 		Assert.assertEquals("Validando a tela Home", "Agenda MS :: Home", homePage.recuperarTitulo());
 		agenda.finalizarAgenda();
 	}
-	
+
 	@Então("negar o cadastro validando a mensagem {string}")
 	public void negar_o_cadastro_validando_a_mensagem(String mensagem) {
 		Assert.assertEquals("Validando a mensagem do cadastro", mensagem, cadastro.validarMensagemCaixaDialogo());
