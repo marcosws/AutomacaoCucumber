@@ -10,6 +10,9 @@ public class HomePage extends BasePage{
 		this.setHighLight(true);
 	}
 
+	public String recuperarTitulo() {
+		return this.getTitle();
+	}
 	
 	public void clicarLogout() {
 		this.clickElement(Attribute.xpath, "/html/body/div/div[1]/div/a[1]");

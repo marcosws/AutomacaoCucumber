@@ -10,6 +10,10 @@ public class LoginPage extends BasePage{
 		this.setHighLight(true);
 	}
 	
+	public String recuperarTitulo() {
+		return this.getTitle();
+	}
+	
 	public void digitarLogin(String login) {
 		this.editElement(Attribute.id, "login", login);
 	}

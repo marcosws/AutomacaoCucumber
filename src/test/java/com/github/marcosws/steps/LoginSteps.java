@@ -22,6 +22,7 @@ public class LoginSteps {
 		agenda = new Agenda();
 		agenda.iniciarAgenda();
 		login = new LoginPage();
+		Assert.assertEquals("Validando a tela Login (Inicio)", "Agenda MS :: Inicio", login.recuperarTitulo());
 	}
 
 	@Quando("informar o usuario {string}")
@@ -42,7 +43,8 @@ public class LoginSteps {
 	@Então("permitir acesso validando o tipo de {string} de usuario na tela home")
 	public void validar_o_tipo_de_de_usuario_na_tela_home(String tipoUsuario) {
 		home = new HomePage();
-		Assert.assertEquals("Validando o tipo de Usuario na Tela Home.",tipoUsuario, home.validarTipoUsuario());
+		Assert.assertEquals("Validando a tela Home", "Agenda MS :: Home", home.recuperarTitulo());
+		Assert.assertEquals("Validando o tipo de Usuario na Tela Home.", tipoUsuario, home.validarTipoUsuario());
 		home.clicarLogout();
 		agenda.finalizarAgenda();
 	}
@@ -58,6 +60,11 @@ public class LoginSteps {
 		Assert.assertEquals("Validando a caixa de dialogo na pagina.", mensagem, login.validarMensagemPagina());
 		login.clicarVoltar();
 	    agenda.finalizarAgenda();
+	}
+	
+	@E("clicar em Criar uma conta")
+	public void clicar_em_criar_uma_conta() {
+		login.clicarCriarUmaConta();
 	}
 
 }

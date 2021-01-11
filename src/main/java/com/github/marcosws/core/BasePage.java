@@ -106,6 +106,10 @@ public class BasePage {
 		return webElement.getAttribute("value");
 	}
 	
+	protected String getTitle() {
+		return driver.getTitle();
+	}
+	
 	protected boolean waitElement(Attribute attribute, String value, int timeOutSeconds) {
 		WebDriverWait webDriverWait = new WebDriverWait(driver,timeOutSeconds);
 		WebElement webElement = null;
