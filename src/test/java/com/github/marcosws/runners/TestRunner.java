@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/resources/features/"},
 		glue = {"com.github.marcosws.steps"},
-		tags = "@cadastro"
+		tags = "@negativo"
 		)
 public class TestRunner {
 	

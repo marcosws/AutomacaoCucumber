@@ -73,9 +73,4 @@ public class CadastroSteps {
 		Assert.assertEquals("Validando a mensagem do cadastro", mensagem, cadastro.validarMensagemCaixaDialogo());
 		agenda.finalizarAgenda();
 	}
-
-
-	
-	
-
 }

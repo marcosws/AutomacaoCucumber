@@ -25,9 +25,9 @@ public class LoginSteps {
 		Assert.assertEquals("Validando a tela Login (Inicio)", "Agenda MS :: Inicio", login.recuperarTitulo());
 	}
 
-	@Quando("informar o usuario {string}")
-	public void informar_o_usuario(String usuario) {
-		login.digitarLogin(usuario);
+	@Quando("informar o login {string}")
+	public void informar_o_usuario(String strlogin) {
+		login.digitarLogin(strlogin);
 	}
 
 	@E("inserir uma senha {string}")
@@ -66,5 +66,4 @@ public class LoginSteps {
 	public void clicar_em_criar_uma_conta() {
 		login.clicarCriarUmaConta();
 	}
-
 }

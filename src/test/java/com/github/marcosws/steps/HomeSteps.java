@@ -20,5 +20,4 @@ public class HomeSteps {
 	public void validar_os_textos_na_tela() {
 
 	}
-
 }

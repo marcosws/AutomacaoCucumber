@@ -8,37 +8,37 @@ Funcionalidade: realizar o login na AgendaMS
 
 	@positivo
 	Esquema do Cenário: realizar login na agenda informando usuário e senha válidos
-		Quando informar o usuario <usuario>
+		Quando informar o login <login>
 		E inserir uma senha <senha>
 		E clicar bo botão entrar
 		Então permitir acesso validando o tipo de <conta> de usuario na tela home
 	
 	Exemplos:
-		| usuario     | senha     | conta            |
+		| login       | senha     | conta            |
 		| "admin"     | "admin"   | "Administrativa" |
 		| "nor"       | "nor"     | "Normal"         |
 		
 	@negativo
 	Esquema do Cenário: realizar login na agenda omitindo usuário e senha.
-		Quando informar o usuario <usuario>
+		Quando informar o login <login>
 		E inserir uma senha <senha>
 		E clicar bo botão entrar
 		Então negar acesso validando a mensagem <mensagem> apresentada
 		
 	Exemplos:
-		| usuario     | senha     | mensagem                      |
+		| login       | senha     | mensagem                      |
 		| ""          | "adm"     | "Digite o login de Usuário!"  |
 		| "adm"       | ""        | "Digite a senha de Usuário!"  |
 		
 	@negativo
 	Esquema do Cenário: realizar login na agenda informando usuário e senha inválidos.
-		Quando informar o usuario <usuario>
+		Quando informar o login <login>
 		E inserir uma senha <senha>
 		E clicar bo botão entrar
 		Então negar acesso validando a mensagem <mensagem> na pagina
 		
 	Exemplos:
-		| usuario     | senha     | mensagem                      |
+		| login       | senha     | mensagem                      |
 		| "adm"       | "a123"    | "Senha inválida!"             |
 		| "user"      | "user"    | "Usuário inesistente!"        |
 		

@@ -25,7 +25,7 @@ Funcionalidade: realizar o cadastro de usuário na AgendaMS
 		
 	
 	@negativo
-	Esquema do Cenário: realizar o cadastro do usuário na agenda omotindo campos obrigatórios
+	Esquema do Cenário: realizar o cadastro do usuário na agenda omitindo os campos obrigatórios
 		Quando quando eu digitar o nome <nome>
 		E digitar o login <login>
 		E digitar a senha <senha>
